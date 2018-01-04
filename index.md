@@ -29,8 +29,8 @@ We adapted an approach pioneered by Wachs and co-authors (Wachs et al. 2017) to 
 We use an odds ratio to calculate represents the odds that the user is male and having a given attribute (e.g.: having intra-gender collaborations) compared to the odds of being man in the absence of that given attribute (not having intra-gender collaborations). SE indicates standard error significance stars in the table below denote p<0.05.
 
 ### Logit Table and ROC Curve
-![alt text](https://github.com/velf/velf.github.io/blob/master/Logit.png)
 
+<img src="velf.github.io/blob/master/Logit.png" alt="hi" class="inline"/>
 
 Gender homophily is more likely among women (OR=0.322, p=0.002), women are more likely to collaborate with each other. (See Logit Model, Collaborations) Women have more followers (OR=0.813, p<0.001) but men use more different languages (versatility, OR=1.028, p=0.000). 
 
