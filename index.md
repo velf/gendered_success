@@ -35,7 +35,8 @@ We use an odds ratio to calculate represents the odds that the user is male and 
 Gender homophily is more likely among women (OR=0.322, p=0.002), women are more likely to collaborate with each other. (See Logit Model, Collaborations) Women have more followers (OR=0.813, p<0.001) but men use more different languages (versatility, OR=1.028, p=0.000). 
 
 ### Gender and Success
-![alt text](https://github.com/velf/velf.github.io/blob/master/Gender_Prediction.png)
+
+<img src="Gender_Prediction.png" alt="hi" class="inline"/>
 
 Success is defined as the number of stars on users’ own repositories. We used the gender prediction results (maleness) to understand the correlation between success and gendered behavior. Success is defined as the number of stars on users' repositories.
 
