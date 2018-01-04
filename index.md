@@ -1,6 +1,5 @@
 # Gendered Success in Developer Careers
 
-
 ## Problem
 While women have been shown to make vital contributions to the collective intelligence of teams, to collective intelligence of a team (Wooley-Williams et al., 2010), they are also marginalized in many respects. (Gill, 2002; Terrell et al., 2016) In project-based creative fields investing in social capital by sharing knowledge with other experts is an important aspect of a successful career, and men seem to do a better job at it. (Lutter, 2015) To test this hypothesis in IT, we analyzed the paths to success for men and women using their activity traces on GitHub. 
 
