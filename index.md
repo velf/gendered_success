@@ -30,7 +30,7 @@ We use an odds ratio to calculate represents the odds that the user is male and 
 
 ### Logit Table and ROC Curve
 
-<img src="velf.github.io/blob/master/Logit.png" alt="hi" class="inline"/>
+<img src="Logit.png" alt="hi" class="inline"/>
 
 Gender homophily is more likely among women (OR=0.322, p=0.002), women are more likely to collaborate with each other. (See Logit Model, Collaborations) Women have more followers (OR=0.813, p<0.001) but men use more different languages (versatility, OR=1.028, p=0.000). 
 
