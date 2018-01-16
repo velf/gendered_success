@@ -35,7 +35,7 @@ Gender homophily is more likely among women (OR=0.322, p=0.002), women are more 
 
 ### Gender and Success
 
-<img src="Gender_Prediction.png" alt="hi" class="inline"/>
+<img src="Gender_Success.png" alt="hi" class="inline"/>
 
 Success is defined as the number of stars on users’ own repositories. We used the gender prediction results (maleness) to understand the correlation between success and gendered behavior. Success is defined as the number of stars on users' repositories.
 
