@@ -18,31 +18,58 @@ Since users do not list their gender directly, we infer each person's gender usi
 | No name available or 0.1 < P < 0.9 | unknown  | 6.2 million  |
 | P >= 0.9                           | male     | 1.4 million  |
 
-## Results
+
+
+
 We used collaboration activity to conceptualize individual careers. After filtering for users with at least 10 actions we created stratified samples of each gender group, With 10,000 male, female, and unknown users.
 
-We adapted an approach pioneered by Wachs and co-authors (Wachs et al. 2017) to operationalize the extent to which someone’s behavior follows a gendered pattern, using the resulting continuous variable to consider a continuum, rather than binary, notion of gendered behavior. To gender behaviors, we used a logistic regression to predict the gender of a user using their collaboration history, activity, and programming language use. The resulting coefficients give us a measure of how gendered a given kind of activity or programming language is.
+
+## Career Path Identification
 
 
-## Gender Prediction
-We use an odds ratio to calculate represents the odds that the user is male and having a given attribute (e.g.: having intra-gender collaborations) compared to the odds of being man in the absence of that given attribute (not having intra-gender collaborations). SE indicates standard error significance stars in the table below denote p<0.05.
+For each repository, GitHub auto-detects the main language of every repository based on ts linguist library. We extracted more than 100 different programming languages, and kept the 20 most common ones. Github (2017)
+Programming is a very diverse field, with many different career tracks, such as frontend and backend development, data science or system engineering. Each field has its own favored language combinations, for instance data scientist are more likely to have projects in Python, R, SQL, Jupyter Notebooks and Julia.
+We used Principal Component Analysis to identify the correlation structure within the languages and identify unique career traits. We used Scipy’s PCA.decomposiation package with Varimax Rotation to identify independent factors. Pedragosa et al (2011) We ran the the PCA analysis on each database, then use the least square criteria to extract the factors and compare them. Our method captured the same 6 factors in each sample.
 
-### Logit Table and ROC Curve
+<img src="PCA_factors_correlations_sample1.pdf" alt="hi" class="inline"/>
 
-<img src="Logit.png" alt="hi" class="inline"/>
+We identified 5 main components
 
-Gender homophily is more likely among women (OR=0.322, p=0.002), women are more likely to collaborate with each other. (See Logit Model, Collaborations) Women have more followers (OR=0.813, p<0.001) but men use more different languages (versatility, OR=1.028, p=0.000). 
+<img src="PCA_factors_correlations_sample1.pdf" alt="hi" class="inline"/>
+
+
+## Maleness
+
+We adapted an approach pioneered by Wachs and co-authors (Wachs et al. 2017) to operationalize the extent to which someone’s behavior follows a gendered pattern, using the resulting continuous variable to consider a continuum, rather than binary, notion of gendered behavior. To gender behaviors, we used a a random forest model to predict the gender of a user using their collaboration history, activity, and field they working on. The variable importance plot givse us a measure of how gendered a given kind of activity orfield is.
+
+### Variable Importance and ROC Curve
+
+<img src="RF_importance_PC_SAMPLE1.pdf" alt="hi" class="inline"/>
+
+AUC=(0.71) 
 
 ### Gender and Success
 
-<img src="Gender_Success.png" alt="hi" class="inline"/>
+On GitHUB the number of stars on users’ own repositories defines success. We used the gender prediction results (maleness) to understand the correlation between success and gendered behavior. Here we call successful a developer if s/he has at least one star, (less than 20 percent of active users has at least 1 star.) 
 
-Success is defined as the number of stars on users’ own repositories. We used the gender prediction results (maleness) to understand the correlation between success and gendered behavior. Success is defined as the number of stars on users' repositories.
 
-Maleness is positively related with success (# repository stars), but female developers are systematically less successful, even if they have highly male behaviors. (Red line is always under the blue one.) We ca conclude that women are more likely to collaborate with each other But are more likely to succeed if they adopt a collaboration and activity behavior that is typical of men. For instance, they are more likely to be successful if they collaborate less with other women.
+<img src="MALENESS_SUCCESS_gender_behavior_and_success_github.pdf" alt="hi" class="inline"/>
+
+
+Maleness is positively related with success, but female developers are systematically less successful, even if they have highly male behaviors. (Red line is always under the blue one.) 
+
+
+To understand the effect of gednered behavior we ran 3 logistic regression models 
+
+
+<img src="SUCCESS_Logit_regression_output.pdf" alt="hi" class="inline"/>
+
+
+We ca conclude that women are more likely to collaborate with each other But are more likely to succeed if they adopt a collaboration and activity behavior that is typical of men. For instance, they are more likely to be successful if they collaborate less with other women.
+
 
 ## Closure
-Research shows that in a majority-minority setting the marginalized group should avoid closing itself into cohesive groups, and needs to invest into diverse collaborations to be successful in long term (Lutter, 2015). An important reason why this work is innovative is that it is the result of an interdisciplinary collaboration between a physicist, sociologist, and data scientist. We worked together to understand causes and consequences of female marginalization in technology. We are also able to distill our findings and offer practical advice for young professionals. 
+Research shows that in a majority-minority setting the marginalized group should avoid closing itself into cohesive groups, and needs to invest into diverse collaborations to be successful in long term (Lutter, 2015). An important reason why this work is innovative is that it one of the few gendered studies which aim to computationally understand causes and consequences of female marginalization in technology. We are also able to distill our findings and offer practical advice for young professionals. 
 
 ## References
 *	Bonaccorsi, A. and Rossi, C. (2003). Why Open Source software can succeed. Res. Policy, 32:1243–1258. 
