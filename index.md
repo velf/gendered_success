@@ -20,8 +20,7 @@ Since users do not list their gender directly, we infer each person's gender usi
 
 
 
-
-We used collaboration activity to conceptualize individual careers. After filtering for users with at least 10 actions we created stratified samples of each gender group, With 10,000 male, female, and unknown users.
+We used collaboration activity to conceptualize individual careers. After filtering for users with at least 10 actions we created stratified samples of each gender group, With 10,000 male, female, and unknown users. This short summary shows results of the first smaple.
 
 
 ## Career Path Identification
@@ -29,36 +28,33 @@ We used collaboration activity to conceptualize individual careers. After filter
 
 For each repository, GitHub auto-detects the main language of every repository based on ts linguist library. We extracted more than 100 different programming languages, and kept the 20 most common ones. Github (2017)
 Programming is a very diverse field, with many different career tracks, such as frontend and backend development, data science or system engineering. Each field has its own favored language combinations, for instance data scientist are more likely to have projects in Python, R, SQL, Jupyter Notebooks and Julia.
-We used Principal Component Analysis to identify the correlation structure within the languages and identify unique career traits. We used Scipy’s PCA.decomposiation package with Varimax Rotation to identify independent factors. Pedragosa et al (2011) We ran the the PCA analysis on each database, then use the least square criteria to extract the factors and compare them. Our method captured the same 6 factors in each sample.
+We used Principal Component Analysis to identify the correlation structure within the languages and identify unique career traits. We used Scipy’s PCA.decomposiation package with Varimax Rotation to identify independent factors. Pedragosa et al (2011) We ran the the PCA analysis on each database, then use the least square criteria to extract the factors and compare them.
 
-
-We identified 5 main components
 
 <img src="PCA1.png" alt="hi" class="inline"/>
 
+Correaltion matrix shows the "importance" of each language in the given components. Positive correlation means that users who have a repository in the given language are more likely to contribute in the given field, negative means they are less likely. We identified 6 main components; 1) Frontend development (JavaScript, HTML, CSS, Ruby), 2) Developers using Ruby mainly for backend problems (strong postive Ruby and quite negative JavaScript), 3) Backend Development with high activity in Java, 4) Data Science (Python, Jupyter Notebook, R, C++), 5) iOS development (Objective C, Swift) and 6) PHP enthusiastics with Frontend focus (PHP,CSS).
 
 ## Maleness
 
-We adapted an approach pioneered by Wachs and co-authors (Wachs et al. 2017) to operationalize the extent to which someone’s behavior follows a gendered pattern, using the resulting continuous variable to consider a continuum, rather than binary, notion of gendered behavior. To gender behaviors, we used a a random forest model to predict the gender of a user using their collaboration history, activity, and field they working on. The variable importance plot givse us a measure of how gendered a given kind of activity orfield is.
+We adapted an approach pioneered by Wachs and co-authors (Wachs et al. 2017) to operationalize the extent to which someone’s behavior follows a gendered pattern, using the resulting continuous variable to consider a continuum, rather than binary, notion of gendered behavior. For measuring gendered behavior, we used a a random forest model to predict the gender of a user using their collaboration history, activity, and field they working on. The variable importance plot givse us a measure of how gendered a given kind of activity orfield is.
 
-### Variable Importance and ROC Curve
+### Variable Importance
 
 <img src="var_importance_RF.png" alt="hi" class="inline"/>
 
-AUC=(0.71) 
+Our final model has a mdoerate accuracy (AUC=0.71), menaing there is no perfect classfication based on career tracks, user activity and collaboration history to predict gender. We also run a logistc regression model to understand the sign of the correlation between the independent variables and each language, for more details check <img src="gender_prediction_logit" alt="here" class="inline"/>. Both the Random FOrest and the logit model revealed that gender homophily is more likely among women, the number of female collaborators is the most important indicator of gender on GitHub.
+
 
 ### Gender and Success
 
-On GitHUB the number of stars on users’ own repositories defines success. We used the gender prediction results (maleness) to understand the correlation between success and gendered behavior. Here we call successful a developer if s/he has at least one star, (less than 20 percent of active users has at least 1 star.) 
+On GitHub the number of stars on users’ own repositories defines success. We used the gender prediction results (maleness) to understand the correlation between success and gendered behavior. Here we call successful a developer if s/he has at least one star, (less than 20 percent of active users has at least 1 star.) 
 
 
 <img src="maleness_success.png" alt="hi" class="inline"/>
 
 
-Maleness is positively related with success, but female developers are systematically less successful, even if they have highly male behaviors. (Red line is always under the blue one.) 
-
-
-To understand the effect of gednered behavior we ran 3 logistic regression models 
+Maleness is positively related with success, but female developers are systematically less successful, even if they have highly male behaviors. (Red line is always under the blue one.) To understand the effect of gendered behavior we ran 3 logistic regression models, 1) 
 
 
 <img src="logit_success.png" alt="hi" class="inline"/>
