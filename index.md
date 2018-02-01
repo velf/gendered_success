@@ -54,17 +54,23 @@ On GitHub the number of stars on users’ own repositories defines success. We u
 <img src="maleness_success.png" alt="hi" class="inline"/>
 
 
-Maleness is positively related with success, but female developers are systematically less successful, even if they have highly male behaviors. (Red line is always under the blue one.) To understand the effect of gendered behavior we ran 3 logistic regression models, 1) 
+Maleness is positively related with success, but female developers are systematically less successful, even if they have highly male behaviors. (Red line is always under the blue one.) 
+
+To understand the effect of gendered behavior we ran 3 logistic regression models with dependent variable 'success'.
+We use an odds ratio to calculate represents the odds that the user is successful and having a given attribute (e.g.: being male or adopting male-like behavior) compared to the odds of being not successful in the absence of that given attribute (being a women or not adopting male-like behavior). Significance stars in the table below denote p<0.05.
+
+The control model shows that maleness has a very strong effect on success (OR=42,52), but the model has quite a weak fit (Pseudo R square = 0.1). Maleness becomes less dominant in the second model, where wecontrolled for activity (pushes, number of repositories, where the user was active) and popularity (number of followers) and tenure. The model fits better (R2= 0.29). At the third model we only predicted success for userees whose gender could not have been inferred and found that maleness is has a negative, but significant effect in success (OR=0.4) and tenure and activity become stronger indicators. It seems thatthe 'hiding gender' population uses different meechanism to achieve community reputation.
 
 
 <img src="logit_success.png" alt="hi" class="inline"/>
 
 
-We ca conclude that women are more likely to collaborate with each other But are more likely to succeed if they adopt a collaboration and activity behavior that is typical of men. For instance, they are more likely to be successful if they collaborate less with other women.
-
 
 ## Closure
-Research shows that in a majority-minority setting the marginalized group should avoid closing itself into cohesive groups, and needs to invest into diverse collaborations to be successful in long term (Lutter, 2015). An important reason why this work is innovative is that it one of the few gendered studies which aim to computationally understand causes and consequences of female marginalization in technology. We are also able to distill our findings and offer practical advice for young professionals. 
+
+Research shows that in a majority-minority setting the marginalized group should avoid closing itself into cohesive groups, and needs to invest into diverse collaborations to be successful in long term (Lutter, 2015). We ca conclude that women are more likely to collaborate with each other, but more likely to succeed if they adopt a collaboration and activity behavior that is typical of men. For instance, they are more likely to be successful if they collaborate less with other women. 
+An important reason why this work is innovative is that it one of the few gendered studies which aim to computationally understand causes and consequences of female marginalization in technology. We are also able to distill our findings and offer practical advice for young professionals. 
+
 
 ## References
 *	Bonaccorsi, A. and Rossi, C. (2003). Why Open Source software can succeed. Res. Policy, 32:1243–1258. 
