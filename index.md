@@ -26,15 +26,15 @@ We used collaboration activity to conceptualize individual careers. After filter
 ## Career Path Identification
 
 
-For each repository, GitHub auto-detects the main language of every repository based on its linguist library. We extracted more than 100 different programming languages, and kept the 20 most common ones. 
+For each repository, GitHub auto-detects the main language. In total we extracted more than 100 different programming languages, and kept the 20 most common ones. 
 
 
 Programming is a very diverse field, with different career tracks, such as frontend and backend development, data science or system engineering. Each field has its own favored language combinations, for instance data scientist are more likely to use Python, R, SQL, Jupyter Notebooks and Julia.
-We used Principal Component Analysis to identify the correlation structure within the language preference and identify career tracks. We used Scipy’s PCA.decomposiation package with Varimax Rotation to identify independent factors. (Pedragosa et al; 2011)
+We used Principal Component Analysis to identify the correlation structure of used languages. We used Scipy’s PCA.decomposiation package with Varimax Rotation to identify independent factors (career tracks). (Pedragosa et al; 2011)
 
 <img src="PCA1.png" alt="hi" class="inline"/>
 
-Correlation matrix shows the "importance"  and sign of the relationship of each language in the given components. We identified 6 main components; 1) Frontend development (JavaScript, HTML, CSS, Ruby), 2) Developers using Ruby mainly for backend problems (strong positive Ruby and quite negative JavaScript), 3) Backend Development with high activity in Java, 4) Data Science (Python, Jupyter Notebook, R, C++), 5) iOS development (Objective C, Swift) and 6) PHP enthusiastic with Frontend focus (PHP,CSS).
+Correlation matrix shows the "importance"  and the sign of the relationship of the language in the component. We identified 6 main career tracks; 1) Frontend development *(JavaScript, HTML, CSS, Ruby*), 2) Developers using Ruby for backend development *(strong positive Ruby and quite negative JavaScript)*, 3) Backend Development with high activity in Java, 4) Data Science *(Python, Jupyter Notebook, R, C++)*, 5) iOS development *(Objective C, Swift)* and 6) PHP enthusiastic with Frontend focus *(PHP,CSS)*.
 
 ## Maleness
 
@@ -44,23 +44,22 @@ We adapted an approach pioneered by Wachs and co-authors (Wachs et al. 2017) to 
 
 <img src="var_importance_RF.png" alt="hi" class="inline"/>
 
-Our final model has a moderate accuracy (AUC=0.71), meaning there is no perfect classification based on career tracks, user activity and collaboration history to predict gender. We also run a logistic regression model to understand the sign of the relationship between gender and each language, for more details check the model <img src="gender_prediction_logit.pdf" alt="here" class="inline"/>. Both the Random Forest and the Logit Model revealed that gender homophily is more likely among women, the number of female collaborators is the most important indicator of gender prediction on GitHub.
+Our final model has a moderate accuracy (AUC=0.71), meaning there is no perfect classification for gender based on career tracks, user activity and collaboration history. We also run a logistic regression model to understand the sign of the relationship between gender and languages, for more details check the model <img src="gender_prediction_logit.pdf" alt="here" class="inline"/>. Both the Random Forest and the Logit Model revealed that gender homophily is more likely among women, the number of female collaborators is the most important indicator of gender prediction on GitHub.
 
 
 ### Gender and Success
 
-On GitHub the number of stars on users’ own repositories defines success. We used the gender prediction results (maleness) to understand the correlation between success and gendered behavior. We call successful a developer if s/he has at least one star, because less than 20 percent of active users has at least 1 star.
+On GitHub the number of stars on users’ own repositories defines success. We used the gender prediction results *(maleness)* for exploring the correlation between success and *gendered behavior*. We call successful a developer if s/he has at least one star, because less than 20 percent of active users has at least 1 star.
 
 
 <img src="maleness_success.png" alt="hi" class="inline"/>
 
 
-Maleness is positively related with success, but female developers are systematically less successful, even if they have highly male behaviors. (Red line is always under the blue one.) 
+**Maleness is positively related with success, but female developers are systematically less successful**, even if they behave highly male-like. (Red line is always under the blue one.) 
 
-To understand the effect of gendered behavior deeper, we ran 3 logistic regression models with dependent variable 'success'.
-We use an odds ratio to calculate represents the odds that the user is successful and having a given attribute (e.g.: being male or adopting male-like behavior) compared to the odds of being not successful in the absence of that given attribute (being a women, or not adopting male-like behavior). Significance stars in the table below denote p<0.05.
+We ran 3 logistic regression models with dependent variable 'success'.Odds ratio represents the odds that the user is successful and having a given attribute (e.g.: being male or adopting male-like behavior) compared to the odds of being not successful in the absence of that given attribute (being a women, or not adopting male-like behavior). Significance stars in the table below denote p<0.05.
 
-The control model shows that maleness has a very strong effect on success (OR=42,52), but the model has quite a weak fit (Pseudo R square = 0.10). Maleness becomes less dominant in the second model, where we controlled for activity (pushes, number of repositories, where the user was active) and popularity (number of followers) and tenure. The model fits better (R2= 0.29). At the third model, where we only predicted success for users whose gender could not have been inferred. Third model shows that maleness has a negative, but significant effect in success (OR=0.4) and tenure and activity become stronger indicators. It seems that the 'hiding gender' population uses different mechanism to achieve community reputation.
+The control model shows that maleness has a very strong effect on success (OR=42.52), but the model has quite a weak fit (Pseudo R square = 0.10). Maleness becomes less dominant in the second model, where we controlled for activity *(pushes, number of repositories, where the user was active)* and popularity *(number of followers)* and tenure. The model fits better (R2= 0.29). At the third model, where we only predicted success for users whose gender could not have been inferred, founf that maleness has a negative, but significant effect in success (OR=0.4) and tenure and activity become stronger indicators. It seems that the *hiding gender* population uses different mechanism to achieve community reputation.
 
 
 <img src="logit_success.png" alt="hi" class="inline"/>
@@ -68,7 +67,7 @@ The control model shows that maleness has a very strong effect on success (OR=42
 
 ## Closure
 
-Research shows that in a majority-minority setting the marginalized group should avoid closing itself into cohesive groups, and needs to invest into diverse collaborations to be successful in long term (Lutter, 2015). We ca conclude that women are more likely to collaborate with each other, but more likely to succeed if they adopt a collaboration and activity behavior that is typical of men. For instance, they are more likely to be successful if they collaborate less with other women. 
+Research shows that in a majority-minority setting the marginalized group should avoid closing itself into cohesive groups, and needs to invest into diverse collaborations to be successful in long term (Lutter, 2015). We can conclude that women collaborate with each other more, but more likely to succeed if they adopt a collaboration and activity behavior that is typical of men. For instance, they are more likely to be successful if they collaborate less with other women. 
 An important reason why this work is innovative is that it one of the few gendered studies which aim to computationally understand causes and consequences of female marginalization in technology. We are also able to distill our findings and offer practical advice for young professionals. 
 
 
